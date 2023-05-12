@@ -11,10 +11,7 @@ all: img
 
 img: $(TARGETS_IMG) $(TARGETS_CSS)
 
-# IMAGES -- not handled by require.js on purpose, hence the creation of the directory
-build:
-	mkdir -p $@
-
+# IMAGES
 build/%.png: %.png
 	ls -sh $<
 	pngquant --force --speed 1 --verbose - < $< > $@
