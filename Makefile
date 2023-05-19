@@ -10,7 +10,7 @@ SCALED_FLAGS := $(foreach ft, $(COUNTRIES_LIST_CST), flags/$(word 1, $(subst :, 
 ALIASES_NEEDED := $(foreach ft, $(COUNTRIES_LIST_CST), \
 	$(if $(filter $(word 1, $(subst :, ,$(ft))),$(word 2, $(subst :, ,$(ft)))),,$(word 1, $(subst :, ,$(ft))):$(word 2, $(subst :, ,$(ft)))) \
 )
-ALIASES_TEMP := $(foreach ft, $(ALIASES_NEEDED), country-flags/png250px/$(word 1, $(subst :, ,$(ft))).png)
+ALIASES_TEMP := $(foreach ft, $(ALIASES_NEEDED), country-flags/png1000px/$(word 1, $(subst :, ,$(ft))).png)
 
 # Outputs
 SOURCES_IMG := flags.png flags@2x.png
@@ -24,20 +24,20 @@ img: $(TARGETS_IMG) $(TARGETS_CSS) $(COUNTRIES_LIST) $(SCALED_FLAGS)
 
 # ALIASES
 $(foreach ft, $(ALIASES_NEEDED), \
-	$(eval country-flags/png250px/$(word 1, $(subst :, ,$(ft))).png: country-flags/png250px/$(word 2, $(subst :, ,$(ft))).png ; \
+	$(eval country-flags/png1000px/$(word 1, $(subst :, ,$(ft))).png: country-flags/png1000px/$(word 2, $(subst :, ,$(ft))).png ; \
 		ln -vs $$(notdir $$<) $$@ \
 	) \
 )
 
 # IMAGES
-flags/%.edge.png: country-flags/png250px/%.png
-	convert $< -resize '120x66>' -set option:distort:viewport 120x66 -virtual-pixel edge -distort srt "%[fx:w/2],%[fx:h/2] 1 0 60,33" $@
+flags/%.edge.png: country-flags/png1000px/%.png
+	convert -filter Lanczos -depth 24 $< -resize '120x66>' -set option:distort:viewport 120x66 -virtual-pixel edge -distort srt "%[fx:w/2],%[fx:h/2] 1 0 60,33" -alpha off $@
 
-flags/%.fill.png: country-flags/png250px/%.png
-	convert $< -resize '120x66^' -gravity center -crop '120x66+0+0' +repage $@
+flags/%.fill.png: country-flags/png1000px/%.png
+	convert -filter Lanczos -depth 24 $< -resize '120x66^' -gravity center -crop '120x66+0+0' +repage -alpha off $@
 
-flags/%.noratio.png: country-flags/png250px/%.png
-	convert $< -resize '120x66!' -gravity center -crop '120x66+0+0' +repage $@
+flags/%.noratio.png: country-flags/png1000px/%.png
+	convert -filter Lanczos -depth 24 $< -resize '120x66!' -gravity center -crop '120x66+0+0' +repage -alpha off $@
 
 build/%.png: %.png
 	ls -sh $<
@@ -46,13 +46,13 @@ build/%.png: %.png
 
 # SPRITE
 flags.png: $(SCALED_FLAGS)
-	montage -background black -geometry 60x33!+0+0 $^ -depth 8 $@
+	montage -background black -geometry 60x33!+0+0 $^ -depth 24 $@
 
 flags@2x.png: $(SCALED_FLAGS)
-	montage -background black -geometry 120x66!+0+0 $^ -depth 8 $@
+	montage -background black -geometry 120x66!+0+0 $^ -depth 24 $@
 
 flags.shtml: $(SCALED_FLAGS)
-	montage -background black -geometry 60x33!+0+0 $^ -depth 8 $@
+	montage -background black -geometry 60x33!+0+0 $^ -depth 24 $@
 
 build/flags.css: flags.shtml flags@2x.png flags.png
 	sed -rnf flags-html-to-css.sed $< > $@

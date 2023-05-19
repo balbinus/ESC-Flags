@@ -4,7 +4,7 @@ at:at:noratio
 au:au:noratio
 az:az:fill
 be:be:fill
-bg:bg:fill
+bg:bg:noratio
 by:by:fill
 ch:ch:edge
 cy:cy:edge
@@ -25,8 +25,8 @@ il:il:edge
 is:is:noratio
 it:it:fill
 kz:kz:edge
-lt:lt:fill
-lu:lu:fill
+lt:lt:noratio
+lu:lu:noratio
 lv:lv:fill
 md:md:edge
 me:me:noratio
