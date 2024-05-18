@@ -59,7 +59,7 @@ build/flags.css: flags.shtml flags@2x.png flags.png
 
 # CLEANUP
 clean:
-	-rm flags/* build/flags.png build/flags@2x.png build/flags.css
+	-rm flags/* build/flags.png build/flags@2x.png build/flags.css $(ALIASES_TEMP)
 
 .PHONY: prod img clean
 .INTERMEDIATE: flags.png flags@2x.png flags.shtml
