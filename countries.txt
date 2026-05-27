@@ -41,6 +41,7 @@ rs:rs:edge
 ru:ru:noratio
 se:se:noratio
 si:si:edge
+sk:sk:edge
 sm:sm:edge
 ua:ua:fill
 uk:gb:noratio
