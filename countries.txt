@@ -44,4 +44,5 @@ si:si:edge
 sm:sm:edge
 ua:ua:fill
 uk:gb:noratio
+xk:xk:edge
 xw:gb-wls:edge
