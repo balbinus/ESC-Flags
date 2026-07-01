@@ -6,6 +6,7 @@ az:az:fill
 be:be:fill
 bg:bg:noratio
 by:by:fill
+ca:ca:fill
 ch:ch:edge
 cy:cy:edge
 cz:cz:noratio
