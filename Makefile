@@ -1,5 +1,10 @@
+# Build a sprite of flags for countries currently in the Eurovision Song Contest (ESC) and generate a CSS file to use it in a web page.
+# See the list of countries in countries.txt, which is a list of `country-id:alias-source:transformation` tuples.
+# `country-id` will be used in the CSS output, `alias-source` is the country code used in the country-flags repository,
+# and `transformation` is one of `edge`, `fill`, or `noratio`, used to force the flag to conform to the output format we need.
+# 
 # dependencies:
-#    Debian packages: pngquant imagemagick
+#    Debian packages: pngquant imagemagick sed
 
 # List of (country, source, transformation)
 COUNTRIES_LIST := countries.txt
