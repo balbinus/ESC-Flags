@@ -7,6 +7,10 @@ on:
       - 'Makefile'
       - 'flags-html-to-css.sed'
 
+permissions:
+  # Needed for creating a release
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
