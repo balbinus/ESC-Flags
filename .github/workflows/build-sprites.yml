@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
       - run: sudo apt-get update && sudo apt-get install -y imagemagick pngquant sed
@@ -19,7 +19,7 @@ jobs:
       - name: zip artifacts
         run: cd build && zip ../esc-flags.zip flags*.*
       - name: create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ github.run_number }}
           files: esc-flags.zip
